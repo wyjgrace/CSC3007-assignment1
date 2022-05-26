@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      rect {
+        fill: red;
+      }
+
+      #circle {
+        fill: whitesmoke;
+      }
+
+      line {
+        stroke-width: 1%;
+      }
+      .message {
+        font-size: 60px;
+        font-family: Arial, Helvetica, sans-serif;
+        stroke: #fff;
+        fill: rgba(28, 127, 238, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="1000" height="1000">
+      <g>
+        <g id="circle" fill="red">
+          <circle cx="500" cy="500" r="300"></circle>
+          <circle cx="500" cy="200" r="200"></circle>
+        </g>
+
+        <g id="eyes" fill="black">
+          <circle cx="550" cy="180" r="20"></circle>
+          <circle cx="350" cy="180" r="20"></circle>
+        </g>
+
+        <g>
+          <rect x="450" y="450" width="50" height="50"></rect>
+          <rect x="450" y="550" width="50" height="50"></rect>
+        </g>
+      </g>
+
+      <line x1="750" y1="400" x2="900" y2="500" stroke="black"></line>
+      <line x1="250" y1="400" x2="150" y2="500" stroke="black"></line>
+      <polygon
+        points="90,5 30,120 165,50 15,
+				50 150,120"
+        fill="yellow"
+      />
+      <!-- <path
+        d="M10 500 C 900 100, 100 900, 990 500"
+        stroke="#000"
+        fill="none"
+      ></path> -->
+
+      <!-- <path
+        d="M140 20C73 20 20 74 20 140c0 135 136 170 228 303 88-132 229-173 229-303 0-66-54-120-120-120-48 0-90 28-109 69-19-41-60-69-108-69z"
+      ></path> -->
+      <text class="message" x="0" y="100">Hello World</text>
+
+      <path
+        id="helloworld"
+        d="M80 960 C 750 800, 100 790, 890 890"
+        stroke="#000"
+        fill="none"
+      ></path>
+
+      <text font-size="60px">
+        <textPath xlink:href="#helloworld">
+          Hi guys! My name is snowloverr
+        </textPath>
+      </text>
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Outline"
+      viewBox="0 0 24 24"
+      width="512"
+      height="512"
+    >
+      <g transform="rotate(180)" transform-origin="50% 50%" fill="blue">
+        <path
+          d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0ZM22,12a9.938,9.938,0,0,1-1.662,5.508l-1.192-1.193A.5.5,0,0,1,19,15.962V15a3,3,0,0,0-3-3H13a1,1,0,0,1-1-1v-.5a.5.5,0,0,1,.5-.5A2.5,2.5,0,0,0,15,7.5v-1a.5.5,0,0,1,.5-.5h1.379a2.516,2.516,0,0,0,1.767-.732l.377-.377A9.969,9.969,0,0,1,22,12Zm-19.951.963,3.158,3.158A2.978,2.978,0,0,0,7.329,17H10a1,1,0,0,1,1,1v3.949A10.016,10.016,0,0,1,2.049,12.963ZM13,21.949V18a3,3,0,0,0-3-3H7.329a1,1,0,0,1-.708-.293L2.163,10.249A9.978,9.978,0,0,1,17.456,3.63l-.224.224A.507.507,0,0,1,16.879,4H15.5A2.5,2.5,0,0,0,13,6.5v1a.5.5,0,0,1-.5.5A2.5,2.5,0,0,0,10,10.5V11a3,3,0,0,0,3,3h3a1,1,0,0,1,1,1v.962a2.516,2.516,0,0,0,.732,1.767l1.337,1.337A9.971,9.971,0,0,1,13,21.949Z"
+        />
+      </g>
+    </svg>
+  </body>
+</html>

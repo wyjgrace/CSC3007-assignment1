@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      #main {
+        margin-top: 2%;
+        text-align: center;
+        font-family: arial, sans-serif;
+      }
+      .time {
+        display: inline;
+        font-weight: bold;
+      }
+
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 60%;
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+      }
+
+      td:nth-child(1) {
+        text-align: left;
+      }
+
+      th {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f3f3f3;
+      }
+      tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var apiUrl = "https://api.data.gov.sg/v1/environment/psi";
+      fetch(apiUrl)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let table = document.createElement("table");
+          let thead = document.createElement("thead");
+          let tbody = document.createElement("tbody");
+
+          table.appendChild(thead);
+          table.appendChild(tbody);
+
+          document.getElementById("table").appendChild(table);
+
+          let row_1 = document.createElement("tr");
+          let heading_1 = document.createElement("th");
+          heading_1.innerHTML = "Metric";
+          let heading_2 = document.createElement("th");
+          heading_2.innerHTML = "National";
+          let heading_3 = document.createElement("th");
+          heading_3.innerHTML = "West";
+          let heading_4 = document.createElement("th");
+          heading_4.innerHTML = "East";
+          let heading_5 = document.createElement("th");
+          heading_5.innerHTML = "North";
+          let heading_6 = document.createElement("th");
+          heading_6.innerHTML = "South";
+
+          row_1.appendChild(heading_1);
+          row_1.appendChild(heading_2);
+          row_1.appendChild(heading_3);
+          row_1.appendChild(heading_4);
+          row_1.appendChild(heading_5);
+          row_1.appendChild(heading_6);
+          thead.appendChild(row_1);
+
+          document.getElementById("time").innerHTML = moment(
+            data.items[0]["update_timestamp"]
+          ).format("MMMM Do YYYY, h:mm");
+
+          for (let key in data.items[0].readings) {
+            console.log(key);
+            console.log(data.items[0].readings[key]);
+
+            let row_2 = document.createElement("tr");
+            let row_2_data_1 = document.createElement("td");
+            row_2_data_1.innerHTML = key;
+
+            let row_2_data_2 = document.createElement("td");
+            row_2_data_2.innerHTML = data.items[0].readings[key].national;
+
+            let row_2_data_3 = document.createElement("td");
+            row_2_data_3.innerHTML = data.items[0].readings[key].west;
+
+            let row_2_data_4 = document.createElement("td");
+            row_2_data_4.innerHTML = data.items[0].readings[key].east;
+
+            let row_2_data_5 = document.createElement("td");
+            row_2_data_5.innerHTML = data.items[0].readings[key].north;
+
+            let row_2_data_6 = document.createElement("td");
+            row_2_data_6.innerHTML = data.items[0].readings[key].south;
+
+            row_2.appendChild(row_2_data_1);
+            row_2.appendChild(row_2_data_2);
+            row_2.appendChild(row_2_data_3);
+            row_2.appendChild(row_2_data_4);
+            row_2.appendChild(row_2_data_5);
+            row_2.appendChild(row_2_data_6);
+            tbody.appendChild(row_2);
+          }
+        })
+        .catch((err) => {
+          // Do something for an error here
+        });
+    </script>
+    <div id="main">
+      <div class="time">
+        Last Updated
+        <span id="time"></span>
+      </div>
+      <div id="table"></div>
+    </div>
+  </body>
+</html>
