@@ -77,13 +77,15 @@
           let heading_2 = document.createElement("th");
           heading_2.innerHTML = "National";
           let heading_3 = document.createElement("th");
-          heading_3.innerHTML = "West";
+          heading_3.innerHTML = "Central";
           let heading_4 = document.createElement("th");
-          heading_4.innerHTML = "East";
+          heading_4.innerHTML = "West";
           let heading_5 = document.createElement("th");
-          heading_5.innerHTML = "North";
+          heading_5.innerHTML = "East";
           let heading_6 = document.createElement("th");
-          heading_6.innerHTML = "South";
+          heading_6.innerHTML = "North";
+          let heading_7 = document.createElement("th");
+          heading_7.innerHTML = "South";
 
           row_1.appendChild(heading_1);
           row_1.appendChild(heading_2);
@@ -91,6 +93,7 @@
           row_1.appendChild(heading_4);
           row_1.appendChild(heading_5);
           row_1.appendChild(heading_6);
+          row_1.appendChild(heading_7);
           thead.appendChild(row_1);
 
           document.getElementById("time").innerHTML = moment(
@@ -108,6 +111,9 @@
             let row_2_data_2 = document.createElement("td");
             row_2_data_2.innerHTML = data.items[0].readings[key].national;
 
+            let row_2_data_7 = document.createElement("td");
+            row_2_data_7.innerHTML = data.items[0].readings[key].central;
+
             let row_2_data_3 = document.createElement("td");
             row_2_data_3.innerHTML = data.items[0].readings[key].west;
 
@@ -122,6 +128,7 @@
 
             row_2.appendChild(row_2_data_1);
             row_2.appendChild(row_2_data_2);
+            row_2.appendChild(row_2_data_7);
             row_2.appendChild(row_2_data_3);
             row_2.appendChild(row_2_data_4);
             row_2.appendChild(row_2_data_5);
